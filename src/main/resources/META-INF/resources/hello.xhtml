@@ -1,0 +1,51 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+
+    </h:head>
+
+    <h:body>
+        <h:form id="form">
+            <p:tabView>
+                <p:tab title="MENSAGEM">
+                    <h:panelGrid columns="2" cellpadding="10">
+                        <h:outputLabel value="Título" for="tituloInput" />
+                        <p:inputText id="tituloInput" value="#{mensagemMBean.titulo}"/>    
+                        <h:outputLabel value="Texto" for="textoInput" />
+                        <p:inputTextarea id="textoInput" value="#{mensagemMBean.texto}" />
+                    </h:panelGrid>
+                </p:tab>
+
+                <p:tab title="FILTROS">
+                    <p:fieldset legend="Categoria Funcional" style="margin-bottom:20px">
+                        <h:panelGrid columns="2" cellpadding="10">
+                            <h:outputLabel value="Servidor" for="servidorCheckBox" />
+                            <p:selectBooleanCheckbox value="#{mensagemMBean.servidor}" id="servidorCheckBox"/>
+                            <h:outputLabel value="Residente" for="residenteCheckBox" />
+                            <p:selectBooleanCheckbox value="#{mensagemMBean.residente}" />
+                        </h:panelGrid>
+                    </p:fieldset>
+                </p:tab>
+
+                <p:tab title="AD-HOC">
+                    <p:dataTable var="destinatario" value="#{mensagemMBean.destinatarios}">
+                        <p:column headerText="Nome">
+                            <h:outputText value="#{destinatario.nome}" />
+                        </p:column>
+                        <p:column headerText="Tipo">
+                            <h:outputText value="#{destinatario.tipo}" />
+                        </p:column>
+                        <p:column headerText="Token">
+                            <h:outputText value="#{destinatario.token}" />
+                        </p:column>
+                    </p:dataTable>
+
+                    <p:commandButton value="Enviar Mensagem" action="#{mensagemMBean.enviar()}" styleClass="ui-priority-primary" />
+                </p:tab>
+            </p:tabView>
+        </h:form>
+    </h:body>
+</html>
