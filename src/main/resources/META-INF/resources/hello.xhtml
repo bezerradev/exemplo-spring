@@ -42,8 +42,16 @@
                             <h:outputText value="#{destinatario.token}" />
                         </p:column>
                     </p:dataTable>
-
                     <p:commandButton value="Enviar Mensagem" action="#{mensagemMBean.enviar()}" styleClass="ui-priority-primary" />
+                </p:tab>
+                <p:tab title="Agendar">
+                    <h:panelGrid columns="3" cellpadding="10">
+                        <p:outputLabel for="button" value="Data de Hoje:" />
+                        <h:outputText value="#{calendarView.dataHoje()}" />
+                        <p:calendar id="button" value="#{calendarView.date3}" showOn="button" />
+                    </h:panelGrid>
+       
+                    
                 </p:tab>
             </p:tabView>
         </h:form>
