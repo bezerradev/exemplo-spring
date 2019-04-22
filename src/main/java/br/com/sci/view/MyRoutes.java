@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.livraria.livrariaexemplo.view;
+package br.com.sci.view;
 
 import javax.servlet.ServletContext;
 import org.ocpsoft.rewrite.config.Configuration;
@@ -27,7 +27,8 @@ public class MyRoutes extends HttpConfigurationProvider {
 	public Configuration getConfiguration(ServletContext t) {
 		return ConfigurationBuilder.begin()
 			.addRule()
-			.when(Direction.isInbound().and(Path.matches("/")))
+			.when(Direction.isInbound()
+                        .and(Path.matches("/")))
 			.perform(Redirect.temporary("/hello.jsf"));
 	}
 

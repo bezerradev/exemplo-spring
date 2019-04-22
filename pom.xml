@@ -11,7 +11,7 @@
     <groupId>br.com.livraria</groupId>
     <artifactId>livraria-exemplo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>livraria-exemplo</name>
+    <name>sci-heroku</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -37,24 +37,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-        
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <scope>runtime</scope>
-	</dependency>
-        
-        <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        
         <dependency>
             <groupId>org.joinfaces</groupId>
             <artifactId>primefaces-spring-boot-starter</artifactId>
@@ -69,30 +52,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-commons</artifactId>
-            <version>2.1.5.RELEASE</version>
-            <type>jar</type>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-jpa</artifactId>
-            <version>2.1.5.RELEASE</version>
-            <type>jar</type>
-        </dependency>
-        <dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-            <version>2.0.1.Final</version>
-            <type>jar</type>
-        </dependency>
-        <dependency>
-            <groupId>com.example</groupId>
-            <artifactId>postgres-demo</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <type>jar</type>
         </dependency>
     </dependencies>
 
