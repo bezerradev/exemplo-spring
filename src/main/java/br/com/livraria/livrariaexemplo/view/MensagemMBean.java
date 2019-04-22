@@ -22,6 +22,9 @@ import org.springframework.stereotype.Component;
 @ViewScoped
 public class MensagemMBean implements Serializable {
     private String titulo;
+    private String conteudo;
+    private boolean residente;
+    private boolean servidor;
 
     public String getTitulo() {
         return titulo;
@@ -31,12 +34,12 @@ public class MensagemMBean implements Serializable {
         this.titulo = titulo;
     }
 
-    public String getTexto() {
-        return texto;
+    public String getConteudo() {
+        return conteudo;
     }
 
-    public void setTexto(String texto) {
-        this.texto = texto;
+    public void setConteudo(String conteudo) {
+        this.conteudo = conteudo;
     }
 
     public boolean isResidente() {
@@ -54,10 +57,7 @@ public class MensagemMBean implements Serializable {
     public void setServidor(boolean servidor) {
         this.servidor = servidor;
     }
-    private String texto;
-    private boolean residente;
-    private boolean servidor;
-    
+
     private static final long serialVersionUID = 1L;
     
     
@@ -72,7 +72,7 @@ public class MensagemMBean implements Serializable {
        
        Mensagem m = new Mensagem();
        m.setTitulo(titulo);
-       m.setTexto(texto);
+       m.setConteudo(conteudo);
        m.setFiltro(f);
        
        m.enviar();

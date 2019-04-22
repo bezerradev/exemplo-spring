@@ -5,22 +5,69 @@
  */
 package br.com.livraria.livrariaexemplo.model;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 /**
  *
  * @author mocbezerra
  */
-public class Mensagem {
+@Entity
+@Table(name = "mensagens")
+public class Mensagem extends AuditModel {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    @NotBlank
     private String titulo;
 
-    private String texto;
-
-    private List<Destinatario> destinatarios;
+    private String conteudo;
+    
+    
+    //private List<Destinatario> destinatarios;
     
     private Filtro filtro;
+    
+    // contrutor vazio
+    public Mensagem(){
+    }
+    
+    // contrutor 
+    public Mensagem(String titulo, String conteudo  ){
+        this.titulo = titulo;
+        this.conteudo = conteudo;
+    }
 
+    
+    // Many-to-many relationship
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                CascadeType.PERSIST,
+                CascadeType.MERGE
+            })
+    @JoinTable(name = "mensagem_destinatarios",
+            joinColumns = {
+                @JoinColumn(name = "mensagem_id")},
+            inverseJoinColumns = {
+                @JoinColumn(name = "destinatario_id")})
+    private Set<Destinatario> destinatarios = new HashSet<>();
+    
+    
+    
     public Filtro getFiltro() {
         return filtro;
     }
@@ -37,32 +84,40 @@ public class Mensagem {
         this.titulo = titulo;
     }
 
-    public String getTexto() {
-        return texto;
+    public String getConteudo() {
+        return conteudo;
     }
 
-    public void setTexto(String texto) {
-        this.texto = texto;
+    public void setConteudo(String conteudo) {
+        this.conteudo = conteudo;
     }
-
-    public List<Destinatario> getDestinatarios() {
+    
+        public Set<Destinatario> getDestinatarios() {
         return destinatarios;
     }
 
-    public void setDestinatarios(List<Destinatario> destinatarios) {
+    public void setDestinatariso(Set<Destinatario> destinatarios) {
         this.destinatarios = destinatarios;
     }
-
+    
     public List<Destinatario> enviar() {
         List<Destinatario> destinatariosFinais = this.filtro.getDestinatariosFinais();
         
         for (Destinatario d : destinatariosFinais) {
-            this.enviaNotificacao(d.getNome(), this.titulo, this.texto);
+            this.enviaNotificacao(d.getNome(), this.getTitulo(), this.getConteudo());
         }
         return destinatariosFinais;
     }
 
-    public void enviaNotificacao(String nome, String titulo, String texto) {
-        System.out.println("Nome: " + nome + " Titulo: " + titulo + " Texto: " + texto + ".");
+    public void enviaNotificacao(String nome, String titulo, String conteudo) {
+        System.out.println("Nome: " + nome + " Titulo: " + titulo + " conteudo: " + conteudo + ".");
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

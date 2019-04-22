@@ -11,11 +11,13 @@ public class Question extends AuditModel {
     @GeneratedValue(generator = "question_generator")
     @SequenceGenerator(
             name = "question_generator",
-            sequenceName = "question_sequence",
-            initialValue = 1000
+            sequenceName = "question_sequence"
     )
     private Long id;
-
+    
+    @NotBlank
+    private String ddl;
+    
     @NotBlank
     @Size(min = 3, max = 100)
     private String title;
@@ -45,5 +47,19 @@ public class Question extends AuditModel {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    /**
+     * @return the ddl
+     */
+    public String getDdl() {
+        return ddl;
+    }
+
+    /**
+     * @param ddl the ddl to set
+     */
+    public void setDdl(String ddl) {
+        this.ddl = ddl;
     }
 }
