@@ -6,6 +6,6 @@ import javax.annotation.ManagedBean;
 public class HelloMBean {
   
     public String getMensagemInicial() {
-        return "Alô mundo!";
+        return "Alô mundo Loko! ";
     }
 }
