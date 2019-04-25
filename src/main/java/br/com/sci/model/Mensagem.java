@@ -5,6 +5,7 @@
  */
 package br.com.sci.model;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
@@ -17,6 +18,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  *
@@ -24,7 +28,10 @@ import javax.persistence.ManyToMany;
  */
 
 @Entity
-public class Mensagem {
+@Getter 
+@Setter
+@EqualsAndHashCode
+public class Mensagem implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
