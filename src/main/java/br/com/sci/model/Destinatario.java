@@ -52,5 +52,10 @@ public class Destinatario implements Serializable {
             inverseJoinColumns = {
                 @JoinColumn(name = "mensagem_id")})
     private Set<Mensagem> mensagens = new HashSet<>();
+
+    public Destinatario(String nome, String token) {
+        this.nome = nome;
+        this.token = token;
+    }
     
 }
