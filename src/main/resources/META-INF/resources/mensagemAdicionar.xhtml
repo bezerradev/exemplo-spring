@@ -1,0 +1,28 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <h:head>
+
+    </h:head>
+
+    <h:body>
+
+        <ui:include src="menu.xhtml" />
+
+        <h1>Adicionar Mensagem</h1>
+
+        <p:messages showDetail="true" closable="true" for="formMensagem">
+            <p:autoUpdate />
+        </p:messages>
+
+        <h:form id="formMensagem">
+            <p:panelGrid columns="2" layout="tabular" id="gridMensagem">
+                
+                <p:commandButton value="Enviar" action="#{mensagemMBean.insert()}" />
+            </p:panelGrid>
+        </h:form>
+
+    </h:body>
+</html>

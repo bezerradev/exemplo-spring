@@ -1,0 +1,32 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <h:head>
+
+    </h:head>
+
+    <h:body>
+    
+        <ui:include src="menu.xhtml" />
+        
+        <h1>Adicionar Destinatario</h1>
+
+        <p:messages showDetail="true" closable="true" for="destinatarioForm">
+            <p:autoUpdate />
+        </p:messages>
+        
+        <h:form id="destinatarioForm">
+            <p:panelGrid columns="2" layout="tabular" id="destinatarioGrid">
+                <p:outputLabel for="@next" value="Nome:" />
+                <p:inputText maxlength="30" size="30" value="#{destinatarioMBean.bean.nome}"/>
+                <p:outputLabel for="@next" value="Título de eleitor:" />
+                <p:inputText size="12" maxlength="12" value="#{destinatarioMBean.bean.tituloEleitor}" />
+                <p:commandButton value="Adicionar" action="#{destinatarioMBean.insert()}" update="destinatarioGrid"/>
+            </p:panelGrid>
+        </h:form>
+    
+    </h:body>
+</html>

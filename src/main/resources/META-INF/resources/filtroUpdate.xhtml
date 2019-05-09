@@ -1,0 +1,40 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <h:head>
+
+    </h:head>
+
+    <h:body>
+
+        <!--<ui:include src="menu.xhtml" />-->
+
+        <h1>Update Filtro</h1>
+        <a href="/listarFiltro">Listar</a>
+
+        <p:messages showDetail="true" closable="true" for="filtroForm">
+            <p:autoUpdate />
+        </p:messages>
+
+        <h:form id="destinatarioForm">
+            <p:panelGrid columns="2" layout="tabular" id="filtroGrid">
+
+                <p:outputLabel for="@next" value="Descrição:" />
+                <p:inputText maxlength="30" size="30" value="#{filtroMBean.beanUpdate.descricao}"/>
+
+                <p:outputLabel for="@next" value="Sexo:" />
+
+                <p:selectManyCheckbox id="grid" value="#{filtroMBean.beanUpdate.sexos}" layout="grid" columns="3">
+                    <f:attribute name="collectionType" value="java.util.TreeSet" />
+                    <f:selectItems value="#{filtroMBean.sexoValues}" var="sexo" itemLabel="#{sexo.label}" itemValue="#{sexo}" />
+                </p:selectManyCheckbox>
+
+                <p:commandButton value="Update" action="#{filtroMBean.insertUpdate()}" update="filtroGrid"/>
+            </p:panelGrid>
+        </h:form>
+
+    </h:body>
+</html>

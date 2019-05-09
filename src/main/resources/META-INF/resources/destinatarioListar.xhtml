@@ -1,0 +1,24 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <h:head>
+
+    </h:head>
+
+    <h:body>
+        <ui:include src="menu.xhtml" />
+        <h1>Lista de Destinatarios</h1>
+
+        <p:dataTable var="destinatario" value="#{destinatarioMBean.destinatarios}">
+            <p:column headerText="Nome">
+                <h:outputText value="#{destinatario.nome}" />
+            </p:column>
+            <p:column headerText="Título de eleitor">
+                <h:outputText value="#{destinatario.tituloEleitor}" />
+            </p:column>
+        </p:dataTable>
+    </h:body>
+</html>
